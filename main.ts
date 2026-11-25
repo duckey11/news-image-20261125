@@ -306,12 +306,21 @@ function drawLeadScene(x: number, y: number, w: number, h: number): void {
   // smoke
   circle(x + 108, hy - 62, 9, GREY);
   circle(x + 122, hy - 74, 11, GREY);
-  // two drones overhead
-  fillRect(x + 210, y + 30, 10, 4, INK);
-  fillRect(x + 214, y + 26, 2, 12, INK);
-  fillRect(x + 258, y + 52, 10, 4, INK);
-  fillRect(x + 262, y + 48, 2, 12, INK);
+  // two drones overhead (small quadcopters: body bar with a rotor bar
+  // at each end, instead of plain crosses that read as punctuation)
+  drone(x + 210, y + 30, INK);
+  drone(x + 258, y + 52, INK);
   rectOutline(x, y, w, h, 3, NAVY);
+}
+
+// Small quadcopter pictogram: body bar, a rotor bar at each end,
+// joined by short arms. Drawn at the same anchor as the old crosses.
+function drone(x: number, y: number, c: RGB): void {
+  fillRect(x, y + 4, 12, 4, c);
+  fillRect(x - 2, y, 6, 2, c);
+  fillRect(x + 8, y, 6, 2, c);
+  fillRect(x + 1, y + 2, 2, 2, c);
+  fillRect(x + 9, y + 2, 2, 2, c);
 }
 
 // ------------------------------------------------------------- story grid
